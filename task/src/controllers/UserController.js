@@ -3,7 +3,7 @@
  * TODO 2.
  * Import variable users dari file data/users.js
  */
-import users from "../data/users.js";
+import users from "../data/users";
 
 /**
  * SARAN TODO3 - TODO5.
