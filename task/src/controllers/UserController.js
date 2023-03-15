@@ -3,7 +3,7 @@
  * TODO 2.
  * Import variable users dari file data/users.js
  */
-import users from "../data/users";
+import users from "../data/users"
 
 /**
  * SARAN TODO3 - TODO5.
@@ -26,12 +26,12 @@ const formatUser = (title) => {
             return {
             ...user,
             name: `${title} ${user.name}`,
-            };
-        });
+            }
+        })
         resolve(formattedUsers);
-        }, 3000);
-    });
-};
+        }, 3000)
+    })
+}
 
 /**
  * TODO 4.
@@ -44,15 +44,15 @@ const formatUser = (title) => {
 const findByName = (name) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const foundUser = users.find(user => user.name === name);
+            const foundUser = users.find(user => user.name === name)
             if (foundUser) {
-                resolve(foundUser);
+                resolve(foundUser)
             } else {
-                reject(`User with name ${name} not found`);
+                reject(`User with name ${name} not found`)
             }
-        }, 2000);
-    });
-};
+        }, 2000)
+    })
+}
 
 /**
  * SARAN TODO3 - TODO5.
@@ -71,14 +71,14 @@ const findByName = (name) => {
 const filterByMajor = (major) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-        const filteredUsers = users.filter((user) => user.major === major);
-        resolve(filteredUsers);
-        }, 4000);
-    });
-};
+        const filteredUsers = users.filter((user) => user.major === major)
+        resolve(filteredUsers)
+        }, 4000)
+    })
+}
 
 /**
  * TODO 6.
  * Export fungsi: formatUser, findByName, filterByMajor
  */
-export { formatUser, findByName, filterByMajor };
+export { formatUser, findByName, filterByMajor }
