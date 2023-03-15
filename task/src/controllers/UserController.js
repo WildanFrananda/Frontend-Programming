@@ -28,7 +28,7 @@ const formatUser = (title) => {
             name: `${title} ${user.name}`,
             }
         })
-        resolve(formattedUsers);
+        resolve(formattedUsers)
         }, 3000)
     })
 }
