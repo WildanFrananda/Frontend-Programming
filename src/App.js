@@ -1,4 +1,4 @@
-// Import semua component.
+// Import pages.
 import Home from "./pages/Home"
 
 function App() {
