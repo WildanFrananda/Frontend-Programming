@@ -6,23 +6,23 @@
 }
 
 .navbar {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar__brand {
-font-size: 2.4rem;
-margin-bottom: 1rem;
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
 }
 
 .navbar__list {
-display: flex;
-flex-direction: column;
-list-style: none;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
 }
 
 .navbar__item {
-margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Medium Screen */
