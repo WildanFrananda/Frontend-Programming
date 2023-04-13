@@ -1,14 +1,11 @@
 // Import useState from react
-import {useState} from "react"
 import {nanoid} from "nanoid"
 import Movie from "../Movie/Movie"
 import styles from "./Movies.module.css"
-// Import data movies
-import data from "../../utils/constants/data"
 
-function Movies() {
+function Movies(props) {
     // Create movies state
-    const [movies, setMovies] = useState(data)
+    const {movies, setMovies} = props
 
     function handleClick() {
         const movie = {
@@ -32,12 +29,10 @@ function Movies() {
                 <section className={styles.movies}>
                     <h2 className={styles.movies__title}>Latest Movies</h2>
                     <div className={styles.movie__container}>
-                        {
-                            movies
-                                .map((movie) => {
-                                    return <Movie key={movie.id} movie={movie} />
-                                })
-                        }
+                        {movies
+                            .map((movie) => {
+                                return <Movie key={movie.id} movie={movie} />
+                            })}
                     </div>
                     <button onClick={handleClick}>Add Movie</button>
                 </section>
