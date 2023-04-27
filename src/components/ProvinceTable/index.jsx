@@ -21,7 +21,7 @@ function ProvinceTable(props) {
             </tr>
             </thead>
             <tbody>
-            {data.provinces.map((province) => (
+            {data.map((province) => (
                 <tr key={province.kota}>
                 <td>{province.kota}</td>
                 <td>{province.kasus}</td>

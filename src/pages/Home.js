@@ -8,7 +8,7 @@ import data from "../utils/constants/provinces"
 import {useState} from "react"
 
 function Main() {
-    const [provinces, setProvinces] = useState(data)
+    const [provinces, setProvinces] = useState(data.provinces)
     console.log(provinces)
 
     return (
