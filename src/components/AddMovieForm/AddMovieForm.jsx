@@ -9,59 +9,66 @@ function AddMovieForm(props) {
     // Desctructing props: state movies
     const {movies, setMovies} = props
 
-    // Create title and date state
-    const [title, setTitle] = useState("")
-    const [date, setDate] = useState("")
-    const [poster, setPoster] = useState("")
-    const [type, setType] = useState("")
+    const [formData, setFormData] = useState({
+        title: "",
+        date: "",
+        poster: "",
+        type: ""
+    })
+
+    const {title, date, poster, type} = formData
+    
+    function handleChange(e) {
+        const {name, value} = e.target
+
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
 
     const [isTitleError, setIsTitleError] = useState(false)
     const [isDateError, setIsDateError] = useState(false)
     const [isPosterError, setIsPosterError] = useState(false)
 
-    function handleTitle(e) {
-        setTitle(e.target.value)
-    }
-
-    function handleDate(e) {
-        setDate(e.target.value)
-    }
-
-    function handlePoster(e) {
-        setPoster(e.target.value)
-    }
-
-    function handletype(e) {
-        setType(e.target.value)
-    }
-
     function handleSubmit(e) {
         e.preventDefault()
 
+        validate() && addMovie()
+    }
+
+    function validate() {
         if(title === "") {
             setIsTitleError(true)
+            return false
         }
         else if(date === "") {
             setIsDateError(true)
+            setIsTitleError(false)
+            return false
         }
         else if(poster === "") {
             setIsPosterError(true)
+            setIsDateError(false)
+            return false
         }
         else {
-            const movie = {
-                id: nanoid(),
-                title: title,
-                year: date,
-                type: type,
-                poster: poster
-            }
-
-            setMovies([...movies, movie])
-
             setIsTitleError(false)
             setIsDateError(false)
-            setIsPosterError(false)
+            return true
         }
+    }
+
+    function addMovie() {
+        const movie = {
+            id: nanoid(),
+            title: title,
+            year: date,
+            type: type,
+            poster: poster
+        }
+
+        setMovies([...movies, movie])
     }
 
     return (
@@ -83,7 +90,7 @@ function AddMovieForm(props) {
                                     id="title" 
                                     name="title"
                                     value={title}
-                                    onChange={handleTitle}
+                                    onChange={handleChange}
                                 />
                                 {isTitleError && <Alert>Title Wajib Diisi</Alert>}
                             </div>
@@ -97,7 +104,7 @@ function AddMovieForm(props) {
                                     id="date" 
                                     name="date"
                                     value={date}
-                                    onChange={handleDate}
+                                    onChange={handleChange}
                                 />
                                 {isDateError && <Alert>Date Wajib Diisi</Alert>}
                             </div>
@@ -111,7 +118,7 @@ function AddMovieForm(props) {
                                     id="poster"
                                     name="poster"
                                     value={poster}
-                                    onChange={handlePoster}
+                                    onChange={handleChange}
                                 />
                                 {isPosterError && <Alert>Poster Wajib Diisi</Alert>}
                             </div>
@@ -124,7 +131,7 @@ function AddMovieForm(props) {
                                     id="type"
                                     name="type"
                                     value={type}
-                                    onChange={handletype}
+                                    onChange={handleChange}
                                 >
                                     <option value="">-- Pilih Type --</option>
                                     <option value="Action">Action</option>
