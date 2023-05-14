@@ -6,7 +6,7 @@ function Movie(props) {
     const {movie} = props
 
     return (
-        <div className={styles.Movie}>
+        <div className={styles.movie}>
             <img className={styles.movie__images} src={movie.poster} alt={movie.title} />
             <h3 className={styles.movie__title}>{movie.title}</h3>
             <p className={styles.movie__date}>{movie.year}</p>

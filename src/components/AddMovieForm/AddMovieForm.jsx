@@ -27,9 +27,11 @@ function AddMovieForm(props) {
         })
     }
 
-    const [isTitleError, setIsTitleError] = useState(false)
-    const [isDateError, setIsDateError] = useState(false)
-    const [isPosterError, setIsPosterError] = useState(false)
+    const [errors, setErrors] = useState({
+        isTitleError: false,
+        isDateError: false,
+        isPosterError: false,
+    })
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -39,22 +41,19 @@ function AddMovieForm(props) {
 
     function validate() {
         if(title === "") {
-            setIsTitleError(true)
+            setErrors({...errors, isTitleError: true})
             return false
         }
         else if(date === "") {
-            setIsDateError(true)
-            setIsTitleError(false)
+            setErrors({...errors, isDateError:true, isTitleError: false})
             return false
         }
         else if(poster === "") {
-            setIsPosterError(true)
-            setIsDateError(false)
+            setErrors({...errors, isPosterError:true, isDateError: false})
             return false
         }
         else {
-            setIsTitleError(false)
-            setIsDateError(false)
+            setErrors({ isTitleError: false, isDateError: false, isPosterError: false })
             return true
         }
     }
@@ -92,7 +91,7 @@ function AddMovieForm(props) {
                                     value={title}
                                     onChange={handleChange}
                                 />
-                                {isTitleError && <Alert>Title Wajib Diisi</Alert>}
+                                {errors && <Alert>Title Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="year">
@@ -106,7 +105,7 @@ function AddMovieForm(props) {
                                     value={date}
                                     onChange={handleChange}
                                 />
-                                {isDateError && <Alert>Date Wajib Diisi</Alert>}
+                                {errors && <Alert>Date Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="poster">
@@ -120,7 +119,7 @@ function AddMovieForm(props) {
                                     value={poster}
                                     onChange={handleChange}
                                 />
-                                {isPosterError && <Alert>Poster Wajib Diisi</Alert>}
+                                {errors && <Alert>Poster Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="type">
