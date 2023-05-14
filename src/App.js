@@ -1,4 +1,4 @@
-// Import Route dan Routes dari react-router
+// Import Route and Routes from react-router
 import {Routes, Route} from "react-router-dom"
 import Home from "./pages/Home"
 import CreateMovie from "./pages/movie/Create"
