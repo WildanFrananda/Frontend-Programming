@@ -7,10 +7,9 @@ function Layout({childern}) {
         <>
             <Navbar />
                 <main>
-                    {/* <Container>
+                    <Container>
                         {childern}
-                    </Container> */}
-                    {childern}
+                    </Container>
                 </main>
             <Footer />
         </>
