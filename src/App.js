@@ -1,5 +1,5 @@
 // Import Route and Routes from react-router
-import {Routes, Route} from "react-router-dom"
+import {Route, Routes} from "react-router-dom"
 import Home from "./pages/Home"
 import CreateMovie from "./pages/movie/Create"
 import PopularMovie from "./pages/movie/Popular"
@@ -9,8 +9,7 @@ import Layout from "./Layout"
 
 function App() {
 	return (
-		<div>
-			<Home />
+		<>
 			<Layout>
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
@@ -20,7 +19,7 @@ function App() {
 					<Route path="/movie/top" element={<TopRatedMovie />}></Route>
 				</Routes>
 			</Layout>
-		</div>
+		</>
 	)
 }
 

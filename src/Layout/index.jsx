@@ -2,15 +2,13 @@ import Container from "../components/Container"
 import Navbar from "../components/Navbar/Navbar"
 import Footer from "../components/Footer/Footer"
 
-function Layout({childern}) {
+function Layout({children}) {
     return (
         <>
             <Navbar />
-                <main>
-                    <Container>
-                        {childern}
-                    </Container>
-                </main>
+            <main>
+                <Container>{children}</Container>
+            </main>
             <Footer />
         </>
     )
