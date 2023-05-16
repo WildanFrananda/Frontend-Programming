@@ -1,9 +1,9 @@
 import styles from "./index.module.css"
 
-function Container({childern}) {
+function Container({children}) {
     return (
         <div className={styles.container}>
-            {childern}
+            {children}
         </div>
     )
 }
