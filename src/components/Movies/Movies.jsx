@@ -1,4 +1,3 @@
-// Import useState from react
 import {nanoid} from "nanoid"
 import Movie from "../Movie/Movie"
 import styles from "./Movies.module.css"
