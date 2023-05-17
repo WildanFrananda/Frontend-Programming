@@ -4,7 +4,7 @@ function Alert(props) {
     const {children} = props
 
     return (
-        <div>
+        <div className={styles.alert}>
             <span>{children}</span>
         </div>
     )
