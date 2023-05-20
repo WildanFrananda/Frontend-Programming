@@ -19,7 +19,7 @@ function App() {
 					<Route path="/movie/top" element={<TopRatedMovie />}></Route>
 				</Routes>
 			</Layout>
-		</div>
+		</>
 	)
 }
 
