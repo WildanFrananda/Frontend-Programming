@@ -2,6 +2,7 @@ import {nanoid} from "nanoid"
 import {useState} from "react"
 import Alert from "../Alert/Alert"
 import styles from "./AddMovieForm.module.css"
+import Button from "../ui/Button"
 
 // Create a AddMovieForm function component
 function AddMovieForm(props) {
@@ -140,9 +141,7 @@ function AddMovieForm(props) {
                                 </select>
                             </div>
                             <div>
-                                <button className={styles.form__button} type="submit">
-                                    Submit
-                                </button>
+                                <Button variant="secondary" size="lg" full>Add Movie</Button>
                             </div>
                         </form>
                     </div>
