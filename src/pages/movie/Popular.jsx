@@ -20,12 +20,10 @@ function PopularMovie() {
         getPopularMovies()
     }, [])
 
-    console.log(movies)
-
     return (
         <>
             <Hero />
-            <Movies movies={movies} />
+            <Movies title="Popular Movies" movies={movies} />
         </>
     )
 }
