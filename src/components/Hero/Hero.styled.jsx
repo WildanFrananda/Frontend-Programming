@@ -16,13 +16,13 @@ const StyledHero = styled.div`
     }
     
     h2 {
-        color: #4361ee;
+        color: ${({ theme }) => theme.colors.primary};
         margin-bottom: 1rem;
         font-size: 2.44rem;
     }
     
     h3 {
-        color: #b5179e;
+        color: ${({ theme }) => theme.colors.secondary};
         margin-bottom: 1rem;
         font-size: 1.59rem;
     }

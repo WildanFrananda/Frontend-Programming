@@ -3,28 +3,25 @@ import {useEffect, useState} from "react"
 import axios from "axios"
 import StyledHero from "./Hero.styled"
 import Button from "../ui/Button"
+import ENDPOINTS from "../../utils/constants/endpoints"
 
 function Hero() {
     // Create movie state
     const [movie, setMovie] = useState("")
-
-    const API_KEY = process.env.REACT_APP_API_KEY
     const genres = movie && movie.genres
         .map((genre) => genre.name)
         .join(", ")
     const idTrailer = movie && movie.videos.results[0].key
 
     async function getTrendingMovie() {
-        const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
-        const response = await axios(URL)
+        const response = await axios(ENDPOINTS.HERO)
         return response.data.results[0]
     }
 
     async function getDetailMovie() {
         const trendingMovie = await getTrendingMovie()
         const id = trendingMovie.id
-        const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`
-        const response = await axios(URL)
+        const response = await axios(ENDPOINTS.DETAIL(id))
         setMovie(response.data)
     }
 
@@ -46,7 +43,7 @@ function Hero() {
                         as="a"
                         href={`https://www.youtube.com/watch?v=${idTrailer}`}
                         target="_blank">
-                            Watch Trailer
+                            Watch Now
                     </Button>
                 </div>
                 <div>
