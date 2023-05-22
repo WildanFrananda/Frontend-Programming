@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
+import {useDispatch} from "react-redux"
 import axios from "axios"
 import Movies from "../../components/Movies/Movies"
 import Hero from "../../components/Hero/Hero"
+import {updateMovies} from "../../feature/moviesSlice"
 import ENDPOINTS from "../../utils/constants/endpoints"
 
 function NowPlayingMovie() {
-    const [movies, setMovies] = useState([])
+    const dispatch = useDispatch()
 
     async function getNowPlayingMovies() {
         // Fetch fata from API
         const response = await axios(ENDPOINTS.NOW)
-        setMovies(response.data.results)
+        dispatch(updateMovies(response.data.results))
     }
 
     useEffect(function() {
@@ -21,7 +23,7 @@ function NowPlayingMovie() {
     return (
         <>
             <Hero />
-            <Movies title="Now Playing" movies={movies} />
+            <Movies title="Now Playing" />
         </>
     )
 }
