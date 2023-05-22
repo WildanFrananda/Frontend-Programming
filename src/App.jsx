@@ -1,5 +1,5 @@
 // Import module
-import React, {useState} from "react"
+import React from "react"
 import {Route, Routes} from "react-router-dom"
 import {ThemeProvider} from "styled-components"
 import Home from "./pages/Home"
@@ -11,19 +11,16 @@ import Detail from "./pages/movie/Detail"
 import Layout from "./Layout"
 import theme from "./utils/constants/theme"
 import GlobalStyle from "./components/GlobalStyle"
-import data from "./utils/constants/data"
 
 function App() {
-    const [movies, setMovies] = useState(data)
-
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
 				<Layout>
 					<Routes>
-						<Route path="/" element={<Home movies={movies} />} />
-						<Route path="/movie/create" element={<CreateMovie movies={movies} setMovies={setMovies} />} />
+						<Route path="/" element={<Home />} />
+						<Route path="/movie/create" element={<CreateMovie />} />
 						<Route path="/movie/popular" element={<PopularMovie />} />
 						<Route path="/movie/now" element={<NowPlayingMovie />} />
 						<Route path="/movie/top" element={<TopRatedMovie />} />
