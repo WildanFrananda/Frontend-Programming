@@ -1,7 +1,8 @@
-import {nanoid} from "nanoid"
 import {useState} from "react"
-import Alert from "../Alert/Alert"
+import {useNavigate} from "react-router-dom"
+import {nanoid} from "nanoid"
 import styles from "./AddMovieForm.module.css"
+import Alert from "../Alert/Alert"
 import Button from "../ui/Button"
 
 // Create a AddMovieForm function component
@@ -9,6 +10,9 @@ function AddMovieForm(props) {
 
     // Desctructing props: state movies
     const {movies, setMovies} = props
+
+    // Create navigation
+    const navigation = useNavigate()
 
     const [formData, setFormData] = useState({
         title: "",
@@ -54,7 +58,7 @@ function AddMovieForm(props) {
             return false
         }
         else {
-            setErrors({ isTitleError: false, isDateError: false, isPosterError: false })
+            setErrors({isTitleError: false, isDateError: false, isPosterError: false})
             return true
         }
     }
@@ -69,6 +73,8 @@ function AddMovieForm(props) {
         }
 
         setMovies([...movies, movie])
+
+        navigation("/")
     }
 
     return (

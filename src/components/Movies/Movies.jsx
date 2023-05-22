@@ -1,26 +1,11 @@
-import {nanoid} from "nanoid"
+import {useSelector} from "react-redux"
 import Movie from "../Movie/Movie"
 import styles from "./Movies.module.css"
 
 function Movies(props) {
     // Create movies state
-    const {title, movies, setMovies} = props
-
-    function handleClick() {
-        const movie = {
-            id: nanoid(),
-            titile: "Jigsaw Spiral",
-            year: 2021,
-            type: "Movie",
-            poster: "https://picsum.photos/300/400"
-        }
-
-        /**
-         * Update state movies: setMovies
-         * Using spread technique for copy and merge array
-         */
-        setMovies([...movies, movie])
-    }
+    const {title} = props
+    const movies = useSelector((store) => store.movies.movies)
 
     return (
         <div>
@@ -33,7 +18,6 @@ function Movies(props) {
                                 return <Movie key={movie.id} movie={movie} />
                             })}
                     </div>
-                    <button onClick={handleClick}>Add Movie</button>
                 </section>
             </div>
         </div>
