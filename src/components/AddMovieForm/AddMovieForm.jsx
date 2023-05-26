@@ -99,7 +99,7 @@ function AddMovieForm() {
                                     value={title}
                                     onChange={handleChange}
                                 />
-                                {errors && <Alert>Title Wajib Diisi</Alert>}
+                                {errors.isTitleError && <Alert>Title Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="year">
@@ -113,7 +113,7 @@ function AddMovieForm() {
                                     value={date}
                                     onChange={handleChange}
                                 />
-                                {errors && <Alert>Date Wajib Diisi</Alert>}
+                                {errors.isDateError && <Alert>Date Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="poster">
@@ -127,7 +127,7 @@ function AddMovieForm() {
                                     value={poster}
                                     onChange={handleChange}
                                 />
-                                {errors && <Alert>Poster Wajib Diisi</Alert>}
+                                {errors.isPosterError && <Alert>Poster Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label className={styles.form__label} htmlFor="type">
