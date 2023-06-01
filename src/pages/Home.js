@@ -15,8 +15,8 @@ function Main() {
         <main>
             <Hero />
             <Global />
-            <ProvinceTable data={provinces}/>
-            <FormCovid data={provinces} setData={setProvinces}/>
+            <ProvinceTable data={provinces} />
+            <FormCovid provinces={provinces} setProvinces={setProvinces} />
         </main>
     )
 }

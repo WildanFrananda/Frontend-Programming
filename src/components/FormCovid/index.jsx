@@ -6,65 +6,69 @@ import { useState } from "react"
 
 function FormCovid(props) {
     // Destructing props: state provinces
-    const { data, setdata } = props
-    console.log(data)
+    const { provinces, setProvinces } = props
 
     // Create kota, status and jumlah state
-    const [kota, setKota] = useState("")
-    const [status, setStatus] = useState("")
-    const [jumlah, setJumlah] = useState("")
-    const [selectKota, setSelectKota] = useState(null)
+    const [formData, setFormData] = useState({
+        kota: "",
+        status: "",
+        jumlah: ""
+    })
+
+    const {kota, status, jumlah} = formData
+
+    function handleChange(e) {
+        const {name, value} = e.target
+
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+
+    const [province, setSelectKota] = useState(null)
 
     // Create Validation 
-    const [isKotaError, setIsKotaError] = useState(false)
-    const [isStatusError, setIsStatusError] = useState(false)
-    const [isJumlahError, setIsJumlahError] = useState(false)
-
-    // Function for changes the input
-    function handleKota(e) {
-        setKota(e.target.value)
-    }
-
-    function handleStatus(e) {
-        setStatus(e.target.value)
-    }
-
-    function handleJumlah(e) {
-        setJumlah(e.target.value)
-    }
+    const [errors, setErrors] = useState({
+        isKotaError: false,
+        isStatusError: false,
+        isJumlahError: false
+    })
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        // set error if data invalid
-        if (kota === "") {
-            setIsKotaError(true)
-        }
-        else if (status === "") {
-            setIsStatusError(true)
-        }
-        else if (jumlah === "") {
-            setIsJumlahError(true)
-        }
-        else {
-            const province = {
-                kota: data.kota,
-                status: {
-                    positif: data.positif,
-                    sembuh: data.sembuh,
-                    dirawat: data.dirawat,
-                    meninggal: data.meninggal
-                },
-                jumlah: data.jumlah
-            }
+        validate() && updateProvince()
+    }
 
-            setdata([...data, province])
-
-            setIsKotaError(false)
-            setIsStatusError(false)
-            setIsJumlahError(false)
+    function validate() {
+        if(kota === "") {
+            setErrors({...errors, isKotaError: true})
+            return false
+        } else if(status === "") {
+            setErrors({...errors, isStatusError: true, isKotaError: false})
+            return false
+        } else if(jumlah === "") {
+            setErrors({...errors, isJumlahError: true, isStatusError: false})
+            return false
+        } else {
+            setErrors({isKotaError: false, isStatusError: false, isJumlahError: false})
+            return true
         }
     }
+
+    function updateProvince() {
+        const index = provinces.findIndex((item) => item.kota === province)
+        const foundProvince = provinces.find((item) => item.kota === province)
+
+        provinces[index] = {
+            ...foundProvince,
+            [status]: parseInt(foundProvince[status]) + parseInt(jumlah)
+
+        }
+        setProvinces([...provinces])
+    }
+
     return (
         <>
             <div className={styles.container}>
@@ -88,42 +92,14 @@ function FormCovid(props) {
                                     className={styles.form__input}
                                     name="kota"
                                     value={kota}
-                                    onChange={handleKota}
+                                    onChange={handleChange}
                                 >
-                                    {data.map((province, index) => (
+                                    {provinces.map((province, index) => (
                                         <option key={index} value={province.kota}>{province.kota}</option>
                                     ))}
                                 </select>
-                                {selectKota && (
-                                    <div>
-                                        <h3>{selectKota}</h3>
-                                        <p>
-                                            positif:{" "}
-                                            {kota.find((p) => p.kota === selectKota).positif}
-                                        </p>
-                                        <p>
-                                            sembuh:{" "}
-                                            {
-                                                kota.find((p) => p.kota === selectKota)
-                                                    .sembuh
-                                            }
-                                        </p>
-                                        <p>
-                                            meninggal:{" "}
-                                            {
-                                                kota.find((p) => p.kota === selectKota)
-                                                    .meninggal
-                                            }
-                                        </p>
-                                        <p>
-                                            dirawat:{" "}
-                                            {
-                                                kota.find((p) => p.kota === selectKota)
-                                                    .dirawat
-                                            }
-                                        </p>
-                                    </div>)}
-                                {isKotaError && <Alert>Kota Wajib Diisi</Alert>}
+
+                                {errors.isKotaError && <Alert>Kota Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label htmlFor="status" className={styles.form__label}>
@@ -134,7 +110,7 @@ function FormCovid(props) {
                                     className={styles.form__input}
                                     name="status"
                                     value={status}
-                                    onChange={handleStatus}
+                                    onChange={handleChange}
                                 >
                                     <option value="">-- Pilih Status --</option>
                                     <option value={["positif"]}>Positif</option>
@@ -142,7 +118,7 @@ function FormCovid(props) {
                                     <option value={["dirawat"]}>Dirawat</option>
                                     <option value={["meninggal"]}>Meninggal</option>
                                 </select>
-                                {isStatusError && <Alert>Status Wajib Diisi</Alert>}
+                                {provinces.isStatusError && <Alert>Status Wajib Diisi</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label htmlFor="jumlah" className={styles.form__label}>
@@ -151,12 +127,12 @@ function FormCovid(props) {
                                 <input
                                     id="jumlah"
                                     className={styles.form__input}
-                                    type="number"
+                                    type="text"
                                     name="jumlah"
                                     value={jumlah}
-                                    onChange={handleJumlah}
+                                    onChange={handleChange}
                                 />
-                                {isJumlahError && <Alert>Jumlah Wajib Diisi</Alert>}
+                                {provinces.isJumlahError && <Alert>Jumlah Wajib Diisi</Alert>}
                             </div>
                             <div>
                                 <button className={styles.form__button} type="submit">
