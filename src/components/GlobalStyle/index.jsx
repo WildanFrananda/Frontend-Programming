@@ -18,6 +18,34 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
     }
 
+    body.dark-mode {
+    background-color: #111;
+    color: #eee;
+    }
+
+    body.dark-mode a {
+        color: #111;
+    }
+
+    body.dark-mode button {
+        background-color: #eee;
+        color: #111;
+    }
+
+    body.light-mode {
+        background-color: #eee;
+        color: #111;
+    }
+
+    body.light-mode a {
+        color: #111;
+    }
+
+    body.light-mode button {
+        background-color: #111;
+        color: #eee;
+    }
+
     code {
         font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
             monospace;

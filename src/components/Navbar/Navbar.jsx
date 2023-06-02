@@ -1,7 +1,8 @@
 import StyledNavbar from "./Navbar.styled"
 import {Link} from "react-router-dom"
 
-function Navbar() {
+function Navbar(props) {
+
     return (
         <StyledNavbar>
             <nav>

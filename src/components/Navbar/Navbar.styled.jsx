@@ -8,27 +8,36 @@ const StyledNavbar = styled.div`
 
     nav {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 
     h1 {
         font-size: 2.4rem;
-        margin-bottom: 1rem;
+        margin: 0;
     }
 
     ul {
-        display: flex;
-        flex-direction: column;
         list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
     }
 
     li {
-        margin-bottom: 1rem;
+        margin-left: 1rem;
     }
 
     a {
         text-decoration: none;
         color: #fff;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Medium Screen */
