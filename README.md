@@ -24,23 +24,23 @@ To run this app locally, you need to have the following installed:
 Then, follow these steps:
 
 1. Clone this repo to your local machine:
-```
+```bash
  git clone https://github.com/WildanFrananda/Frontend-Programming.git
 ```
 2. Navigate to the project folder:
-```
+```bash
  cd Frontend-Programming
 ```
 3. Install the dependencies:
-```
+```bash
  npm install
 ```
 4. Create a .env file in the root folder and add your TMDB API key:
-```
+```bash
  REACT_APP_API_KEY = YOUR_API_KEY
 ```
 5. Start the app:
-```
+```bash
  npm start
 ```
 6. Enjoy!
