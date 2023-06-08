@@ -8,10 +8,10 @@ This is a React movie database app that allows you to search and browse movies f
 
 Here are some screenshots of the app:
 
-![Home page](home.png)
+<!-- ![Home page](home.png)
 ![Search page](search.png)
 ![Movie details page](movie.png)
-![TV show details page](tvshow.png)
+![TV show details page](tvshow.png) -->
 
 ## Installation
 
