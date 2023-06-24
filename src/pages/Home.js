@@ -9,7 +9,6 @@ import {useState} from "react"
 
 function Main() {
     const [provinces, setProvinces] = useState(data.provinces)
-    console.log(provinces)
 
     return (
         <main>

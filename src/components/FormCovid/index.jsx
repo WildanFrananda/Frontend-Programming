@@ -26,8 +26,6 @@ function FormCovid(props) {
         })
     }
 
-    const [province, setSelectKota] = useState(null)
-
     // Create Validation 
     const [errors, setErrors] = useState({
         isKotaError: false,
@@ -58,13 +56,12 @@ function FormCovid(props) {
     }
 
     function updateProvince() {
-        const index = provinces.findIndex((item) => item.kota === province)
-        const foundProvince = provinces.find((item) => item.kota === province)
+        const index = provinces.findIndex((item) => item.kota === kota)
+        const foundProvince = provinces.find((item) => item.kota === kota)
 
         provinces[index] = {
             ...foundProvince,
             [status]: parseInt(foundProvince[status]) + parseInt(jumlah)
-
         }
         setProvinces([...provinces])
     }
@@ -85,7 +82,7 @@ function FormCovid(props) {
                         <form onSubmit={handleSubmit}>
                             <div className={styles.form__group}>
                                 <label htmlFor="kota" className={styles.form__label}>
-                                    Kota
+                                    Provinces
                                 </label>
                                 <select
                                     id="kota"
@@ -94,12 +91,13 @@ function FormCovid(props) {
                                     value={kota}
                                     onChange={handleChange}
                                 >
+                                    <option value="">-- Choose Province --</option>
                                     {provinces.map((province, index) => (
                                         <option key={index} value={province.kota}>{province.kota}</option>
                                     ))}
                                 </select>
 
-                                {errors.isKotaError && <Alert>Kota Wajib Diisi</Alert>}
+                                {errors.isKotaError && <Alert>Province Required</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label htmlFor="status" className={styles.form__label}>
@@ -112,13 +110,13 @@ function FormCovid(props) {
                                     value={status}
                                     onChange={handleChange}
                                 >
-                                    <option value="">-- Pilih Status --</option>
-                                    <option value={["positif"]}>Positif</option>
+                                    <option value="">-- Choose Status --</option>
+                                    <option value={["kasus"]}>Positif</option>
                                     <option value={["sembuh"]}>Sembuh</option>
                                     <option value={["dirawat"]}>Dirawat</option>
                                     <option value={["meninggal"]}>Meninggal</option>
                                 </select>
-                                {provinces.isStatusError && <Alert>Status Wajib Diisi</Alert>}
+                                {errors.isStatusError && <Alert>Status Required</Alert>}
                             </div>
                             <div className={styles.form__group}>
                                 <label htmlFor="jumlah" className={styles.form__label}>
@@ -132,7 +130,7 @@ function FormCovid(props) {
                                     value={jumlah}
                                     onChange={handleChange}
                                 />
-                                {provinces.isJumlahError && <Alert>Jumlah Wajib Diisi</Alert>}
+                                {errors.isJumlahError && <Alert>Required Amount</Alert>}
                             </div>
                             <div>
                                 <button className={styles.form__button} type="submit">
