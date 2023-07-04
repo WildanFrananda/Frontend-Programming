@@ -1,17 +1,17 @@
-import styles from "./ProvinceTable.module.css"
+import StyledProvinceTable from "./ProvinceTable.styled"
 import Table from "../Table"
 
 function ProvinceTable(props) {
-    const {data} = props;
+    const { data } = props
 
     return (
-        <div className={styles.container}>
-            <div className={styles.provinsi__title}>
-                <h1 className={styles.title}>Provinsi</h1>
-                <h3 className={styles.subtitle}>Data Covid Berdasarkan Provinsi</h3>
+        <StyledProvinceTable>
+            <div className="title">
+                <h1>Province</h1>
+                <h3>Covid Data by Province</h3>
             </div>
             <Table data={data} />
-        </div>
+        </StyledProvinceTable>
     )
 }
 

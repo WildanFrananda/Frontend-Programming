@@ -1,12 +1,12 @@
-import styles from "./Alert.module.css"
+import StyledAlert from "./Alert.styled"
 
 function Alert(props) {
-    const { children } = props;
+    const { children } = props
 
     return (
-        <div className={styles.alert}>
+        <StyledAlert>
             <span>{children}</span>
-        </div>
+        </StyledAlert>
     )
 }
 

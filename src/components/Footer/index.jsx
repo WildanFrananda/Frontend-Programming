@@ -1,20 +1,18 @@
 // Import Styles
-import styles from "./Footer.module.css"
+import StyledFooter from "./Footer.styled"
 
 function Footer() {
     return (
-        <>
-        <div className={styles.container}>
-            <footer className={styles.footer}>
+        <StyledFooter>
+            <footer>
                 <div>
-                    <h1 className={styles.footer__title}>Covid ID</h1>
-                    <h3 className={styles.footer__description}>
-                    Developed by Wildan Frananda
+                    <h1>Covid ID</h1>
+                    <h3>
+                        Developed by Wildan Frananda
                     </h3>
                 </div>
             </footer>
-        </div>
-        </>
+        </StyledFooter>
     )
 }
 

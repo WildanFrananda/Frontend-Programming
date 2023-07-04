@@ -1,31 +1,29 @@
-// Import Styles and image
-import styles from "./Hero.module.css"
+import StyledHero from "./Hero.styled"
 import image from "../assets/Hero.svg"
 
 function Hero() {
     return (
         <>
-            <div className={styles.container}>
-                <section className={styles.hero}>
-                    <div className={styles.hero__left}>
-                        <h1 className={styles.hero__title}>Covid ID</h1>
-                        <h3 className={styles.hero__subtitle}>
-                        Monitoring Perkembangan Covid
+            <StyledHero>
+                <section>
+                    <div className="hero__left">
+                        <h1>Covid ID</h1>
+                        <h3>
+                        Monitoring the COVID-19 Progress
                         </h3>
-                        <p className={styles.hero__description}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.
+                        <p>
+                        Stay informed about the latest developments of COVID-19. We provide real-time updates, statistics, and resources to help you navigate through these challenging times. Together, we can overcome this global pandemic.
                         </p>
-                        <button className={styles.hero__button}>Vaccine</button>
+                        <button>Vaccine</button>
                     </div>
-                    <div className={styles.hero__right}>
+                    <div className="hero__right">
                         <img 
-                        className={styles.hero__image}
                         src={image}
                         alt="doctor"
                         />
                     </div>
                 </section>
-            </div>
+            </StyledHero>
         </>
     )
 }

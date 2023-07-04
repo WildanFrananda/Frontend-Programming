@@ -21,7 +21,7 @@
 
 .form__title {
     text-align: center;
-    color: #06D6A0;
+    color: #118AB2;
     font-size: 2.44rem;
     margin-bottom: 1rem;
 }
@@ -34,6 +34,7 @@
 
 .form__label {
     margin-bottom: 1rem;
+    color: #06D6A0;
 }
 
 .form__input {
@@ -44,14 +45,14 @@
 }
 
 .form__input:focus {
-    border: 1px solid #06D6A0;
+    border: 1px solid #118AB2;
 }
 
 .form__button {
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 10px;
-    background-color: #06D6A0;
+    background-color: #118AB2;
     color: #fff;
     display: block;
     margin: 0 auto;

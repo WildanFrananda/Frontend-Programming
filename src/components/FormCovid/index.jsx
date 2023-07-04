@@ -1,5 +1,4 @@
-// Import Styles and alert
-import styles from "./FormCovid.module.css"
+import StyledFormCovid from "./FormCovid.styled"
 import Alert from "../Alert"
 import image from "../assets/FormCovid.svg"
 import { useState } from "react"
@@ -15,7 +14,7 @@ function FormCovid(props) {
         jumlah: ""
     })
 
-    const {kota, status, jumlah} = formData
+    const { kota, status, jumlah } = formData
 
     function handleChange(e) {
         const {name, value} = e.target
@@ -36,7 +35,14 @@ function FormCovid(props) {
     function handleSubmit(e) {
         e.preventDefault()
 
-        validate() && updateProvince()
+        if(validate()) {
+            updateProvince()
+            setFormData({
+                kota:"",
+                status:"",
+                jumlah:""
+            })
+        }
     }
 
     function validate() {
@@ -68,25 +74,23 @@ function FormCovid(props) {
 
     return (
         <>
-            <div className={styles.container}>
-                <section className={styles.form}>
-                    <div className={styles.form__left}>
+            <StyledFormCovid>
+                <section>
+                    <div className="form__left">
                         <img
-                            className={styles.form__image}
                             src={image}
                             alt="placeholder"
                         />
                     </div>
-                    <div className={styles.form__right}>
-                        <h1 className={styles.form__title}>Form Covid</h1>
+                    <div className="form__right">
+                        <h1>Form Covid</h1>
                         <form onSubmit={handleSubmit}>
-                            <div className={styles.form__group}>
-                                <label htmlFor="kota" className={styles.form__label}>
+                            <div className="form__group">
+                                <label htmlFor="kota">
                                     Provinces
                                 </label>
                                 <select
                                     id="kota"
-                                    className={styles.form__input}
                                     name="kota"
                                     value={kota}
                                     onChange={handleChange}
@@ -99,33 +103,31 @@ function FormCovid(props) {
 
                                 {errors.isKotaError && <Alert>Province Required</Alert>}
                             </div>
-                            <div className={styles.form__group}>
-                                <label htmlFor="status" className={styles.form__label}>
+                            <div className="form__group">
+                                <label htmlFor="status">
                                     Status
                                 </label>
                                 <select
                                     id="status"
-                                    className={styles.form__input}
                                     name="status"
                                     value={status}
                                     onChange={handleChange}
                                 >
                                     <option value="">-- Choose Status --</option>
-                                    <option value={["kasus"]}>Positif</option>
-                                    <option value={["sembuh"]}>Sembuh</option>
-                                    <option value={["dirawat"]}>Dirawat</option>
-                                    <option value={["meninggal"]}>Meninggal</option>
+                                    <option value={["kasus"]}>Cases</option>
+                                    <option value={["sembuh"]}>Recovered</option>
+                                    <option value={["dirawat"]}>Hospitalized</option>
+                                    <option value={["meninggal"]}>Death</option>
                                 </select>
                                 {errors.isStatusError && <Alert>Status Required</Alert>}
                             </div>
-                            <div className={styles.form__group}>
-                                <label htmlFor="jumlah" className={styles.form__label}>
-                                    Jumlah
+                            <div className="form__group">
+                                <label htmlFor="jumlah">
+                                    Amount
                                 </label>
                                 <input
                                     id="jumlah"
-                                    className={styles.form__input}
-                                    type="text"
+                                    type="number"
                                     name="jumlah"
                                     value={jumlah}
                                     onChange={handleChange}
@@ -133,14 +135,14 @@ function FormCovid(props) {
                                 {errors.isJumlahError && <Alert>Required Amount</Alert>}
                             </div>
                             <div>
-                                <button className={styles.form__button} type="submit">
+                                <button type="submit">
                                     Submit
                                 </button>
                             </div>
                         </form>
                     </div>
                 </section>
-            </div>
+            </StyledFormCovid>
         </>
     )
 }

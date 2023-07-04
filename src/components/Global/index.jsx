@@ -1,31 +1,31 @@
-// Import Styles and data
-import styles from "./Global.module.css"
+import StyledGlobal from "./Global.styled"
 import Card from "../Card"
-import data from "../../utils/constants/indonesia"
 
-function Global() {
+function Global(props) {
     // Desctructing data
-    const {indonesia} = data
+    const { situation, title, subtitle } = props
 
     return (
-        <div className={styles.container}>
-            <div className={styles.global}>
-                <h1 className={styles.title}>Indonesia</h1>
-                <h3 className={styles.subtitle}>Data Covid Berdasarkan Indonesia</h3>
+        <StyledGlobal>
+            <div className="global">
+                <h1>{title} Situation</h1>
+                <h3>Data Covid Berdasarkan {subtitle}</h3>
             </div>
-            <div className={styles.card__container}>
-                {indonesia.map((cases, index) => (
-                <Card
-                    key={index}
-                    status={cases.status}
-                    total={cases.total}
-                    color={
-                    index === 0 ? "#06D6A0" : index === 1 ? "#118AB2" : "#EF476F"
-                    }
-                />
-                ))}
+            <div className="card__container">
+                {situation
+                    .map((cases, index) => (
+                        <Card
+                            key={index}
+                            status={cases.status}
+                            total={cases.total}
+                            color={
+                            index === 0 ? "#06D6A0" : index === 1 ? "#118AB2" : "#EF476F"
+                            }
+                        />
+                    )
+                )}
             </div>
-        </div>
+        </StyledGlobal>
     )
 }
 
