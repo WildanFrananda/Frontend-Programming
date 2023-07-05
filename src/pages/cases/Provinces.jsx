@@ -6,7 +6,6 @@ import data from "../../utils/constants/provinces"
 
 function Provinces() {
     const [provinces, setProvinces] = useState(data.provinces)
-
     return (
         <>
             <Hero />

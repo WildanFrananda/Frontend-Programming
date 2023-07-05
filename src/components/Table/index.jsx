@@ -25,15 +25,17 @@ function Table({ data }) {
                 </tr>
             </thead>
             <tbody>
-                {displayedData.map((province, index) => (
-                    <tr key={index}>
-                        <td>{province.kota || province.name}</td>
-                        <td>{province.kasus || province.numbers.confirmed}</td>
-                        <td>{province.sembuh || province.numbers.recovered}</td>
-                        <td>{province.dirawat || province.numbers.treatments}</td>
-                        <td>{province.meninggal || province.numbers.death}</td>
-                    </tr>
-                ))}
+                {displayedData
+                    .map((province, index) => (
+                        <tr key={index}>
+                            <td>{province.kota}</td>
+                            <td>{province.kasus}</td>
+                            <td>{province.sembuh}</td>
+                            <td>{province.dirawat}</td>
+                            <td>{province.meninggal}</td>
+                        </tr>
+                    )
+                )}
             </tbody>
             <tfoot>
                 <tr>
