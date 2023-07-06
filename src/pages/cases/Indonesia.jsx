@@ -3,14 +3,14 @@ import axios from "axios"
 import Hero from "../../components/Hero"
 import Global from "../../components/Global"
 import ProvinceTable from "../../components/ProvinceTable"
+import ENDPOINTS from "../../utils/constants/endpoints"
 
 function Indonesia() {
     const [situation, setSituation] = useState([])
     const [table, setTable] = useState([])
 
-    
     async function getLocalSituation() {
-        const response = await axios("https://covid-fe-2023.vercel.app/api/indonesia.json")
+        const response = await axios(ENDPOINTS.INDONESIA)
         setSituation(response.data.indonesia)
         setTable(response.data.regions)
     }
@@ -30,8 +30,8 @@ function Indonesia() {
     return (
         <>
             <Hero />
-            <Global title="Indonesia" subtitle="Indonesia" situation={situation}/>
-            <ProvinceTable title ="Situation by" data={transformedData}/>
+            <Global title="Indonesia" subtitle="Indonesia" situation={situation} />
+            <ProvinceTable title ="Situation by" data={transformedData} />
         </>
     )
 }
