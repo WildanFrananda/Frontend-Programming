@@ -1,17 +1,31 @@
 import StyledRegionCard from "./RegionCard.styled"
+import ProtectionMask from "../assets/ProtectionMask.png"
+import Smile from "../assets/Smile.png"
+import Skull from "../assets/Skull.png"
 
 function RegionCard(props) {
-    const { status, total, color } = props
+    const { name, numbers } = props
+
     return (
         <StyledRegionCard>
-            <div className="card">
-                <h3>{status.charAt(0).toUpperCase() + status.slice(1)}</h3>
-                <div className="region__left">
-                    <h3 className="card__value" style={{ color: color }}>
-                        {total.toLocaleString("en-US", {useGrouping: true,}).replace(/,/g, '.')}
-                    </h3>
-                </div>
+            <div>
+                <h1 className="card__title">{name}</h1>
             </div>
+            <section>
+                <div className="hero__left">
+                    <p>Confirmed</p>
+                    <h2 className="confirm">{numbers.confirmed.toLocaleString("id-ID")}</h2>
+                    <p>Recovered</p>
+                    <h2 className="recovered">{numbers.recovered.toLocaleString("id-ID")}</h2>
+                    <p>Death</p>
+                    <h2 className="death">{numbers.death.toLocaleString("id-ID")}</h2>
+                </div>
+                <div>
+                    <img src={ProtectionMask} alt="Confirmed" />
+                    <img src={Smile} alt="" />
+                    <img src={Skull} alt="" />
+                </div>
+            </section>
         </StyledRegionCard>
     )
 }

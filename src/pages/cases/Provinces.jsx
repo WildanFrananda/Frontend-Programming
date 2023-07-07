@@ -1,17 +1,16 @@
-import { useState } from "react"
 import Hero from "../../components/Hero"
 import ProvinceTable from "../../components/ProvinceTable"
 import FormCovid from "../../components/FormCovid"
-import data from "../../utils/constants/provinces"
+import { useSelector } from "react-redux"
 
 function Provinces() {
-    const [provinces, setProvinces] = useState(data.provinces)
+    const data = useSelector((state) => state.cases.provinces)
 
     return (
         <>
             <Hero />
-            <ProvinceTable data={provinces} />
-            <FormCovid provinces={provinces} setProvinces={setProvinces} />
+            <ProvinceTable title="Situation by" data={data} />
+            <FormCovid data={data} />
         </>
     )
 }

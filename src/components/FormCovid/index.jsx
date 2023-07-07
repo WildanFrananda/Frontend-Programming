@@ -1,13 +1,14 @@
 import StyledFormCovid from "./FormCovid.styled"
 import Alert from "../Alert"
-import image from "../assets/FormCovid.svg"
+import image from "../assets/FormCovid.png"
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateProvince } from "../../features/casesSlice"
 
-function FormCovid(props) {
-    // Destructing props: state provinces
-    const { provinces, setProvinces } = props
+function FormCovid() {
+    const dispatch = useDispatch()
+    const provinces = useSelector((state) => state.cases.provinces)
 
-    // Create kota, status and jumlah state
     const [formData, setFormData] = useState({
         kota: "",
         status: "",
@@ -25,7 +26,6 @@ function FormCovid(props) {
         })
     }
 
-    // Create Validation 
     const [errors, setErrors] = useState({
         isKotaError: false,
         isStatusError: false,
@@ -36,7 +36,7 @@ function FormCovid(props) {
         e.preventDefault()
 
         if(validate()) {
-            updateProvince()
+            dispatch(updateProvince({ kota, status, jumlah }))
             setFormData({
                 kota:"",
                 status:"",
@@ -59,17 +59,6 @@ function FormCovid(props) {
             setErrors({isKotaError: false, isStatusError: false, isJumlahError: false})
             return true
         }
-    }
-
-    function updateProvince() {
-        const index = provinces.findIndex((item) => item.kota === kota)
-        const foundProvince = provinces.find((item) => item.kota === kota)
-
-        provinces[index] = {
-            ...foundProvince,
-            [status]: parseInt(foundProvince[status]) + parseInt(jumlah)
-        }
-        setProvinces([...provinces])
     }
 
     return (
@@ -96,9 +85,13 @@ function FormCovid(props) {
                                     onChange={handleChange}
                                 >
                                     <option value="">-- Choose Province --</option>
-                                    {provinces.map((province, index) => (
-                                        <option key={index} value={province.kota}>{province.kota}</option>
-                                    ))}
+                                    {provinces
+                                        .map((province, index) => (
+                                            <option key={index} value={province.kota}>
+                                                {province.kota}
+                                            </option>
+                                    )
+                                )}
                                 </select>
 
                                 {errors.isKotaError && <Alert>Province Required</Alert>}

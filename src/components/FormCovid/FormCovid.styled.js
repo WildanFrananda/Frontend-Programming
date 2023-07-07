@@ -15,9 +15,10 @@ const StyledFormCovid = styled.div`
     }
 
     img {
-        max-width: 70%;
+        max-width: 100%;
         border-radius: 25px;
-        height: auto;
+        height: 350px;
+        width: auto;
     }
 
     h1 {

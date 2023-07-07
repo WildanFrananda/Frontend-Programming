@@ -1,5 +1,5 @@
 import StyledHero from "./Hero.styled"
-import image from "../assets/Hero.svg"
+import image from "../assets/Hero.png"
 
 function Hero() {
     return (

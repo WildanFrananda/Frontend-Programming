@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const StyledTable = styled.table`
-    width: 50%;
+    width: 55%;
     justify-content: center;
     border-collapse: collapse;
     border-radius: 0.5em;

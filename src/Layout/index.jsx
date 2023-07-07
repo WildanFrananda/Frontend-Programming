@@ -1,5 +1,5 @@
-import Container from "../components/Container"
 import Navbar from "../components/Navbar"
+import Container from "../components/Container"
 import Footer from "../components/Footer"
 
 function Layout({ children }) {
@@ -7,7 +7,9 @@ function Layout({ children }) {
         <>
             <Navbar />
             <main>
-                <Container>{ children }</Container>
+                <Container>
+                    {children}
+                </Container>
             </main>
             <Footer />
         </>

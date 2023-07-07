@@ -6,9 +6,7 @@ function Card(props) {
         <StyledCard>
             <div className="card">
                 <h3>{status.charAt(0).toUpperCase() + status.slice(1)}</h3>
-                <h3 className="card__value" style={{ color: color }}>{total.toLocaleString("en-US", {
-                    useGrouping: true,
-                }).replace(/,/g, '.')}</h3>
+                <h3 className="card__value" style={{ color: color }}>{total.toLocaleString("id-ID")}</h3>
             </div>
         </StyledCard>
     )

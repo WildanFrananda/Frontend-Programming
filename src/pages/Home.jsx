@@ -7,10 +7,12 @@ import ENDPOINTS from "../utils/constants/endpoints"
 
 function Home() {
     const [situation, setSituation] = useState([])
+    const [region, setRegion] = useState([])
 
     async function getGlobalSituation() {
         const response = await axios(ENDPOINTS.GLOBAL)
         setSituation(response.data.global)
+        setRegion(response.data.regions)
     }
 
     useEffect(() => {
@@ -21,7 +23,7 @@ function Home() {
         <>
             <Hero />
             <Global title="Global" subtitle="Global" situation={situation}/>
-            <Region title="Region" subtitle="Global" situation={situation}/>
+            <Region title="Region" subtitle="Global" region={region}/>
         </>
     )
 }

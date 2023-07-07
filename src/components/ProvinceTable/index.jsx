@@ -2,7 +2,7 @@ import StyledProvinceTable from "./ProvinceTable.styled"
 import Table from "../Table"
 
 function ProvinceTable(props) {
-    const { data, title } = props
+    const { title, data } = props
 
     return (
         <StyledProvinceTable>

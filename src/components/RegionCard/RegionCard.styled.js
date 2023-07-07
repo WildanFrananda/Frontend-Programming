@@ -1,35 +1,76 @@
 import styled from "styled-components"
 
 const StyledRegionCard = styled.div`
-    .card {
-        width: 300px;
-        background: #07182E;
-        position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: #07182E;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-left: 35px;
+    margin-bottom: 40px;
+
+    section {
         display: flex;
-        flex-direction: column;
-        padding: 20px;
-        margin-left: 15px;
-        place-content: center;
-        place-items: center;
-        overflow: hidden;
-        border-radius: 20px;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
     }
 
-    .card h3 {
-        z-index: 1;
-        color: white;
-        font-size: 2em;
-    }
-
-    .region__left {
-        
-    }
-
-    .card__value {
-        font-size: 1rem;
-        margin-top: auto;
+    .card__title {
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        margin: 15px;
+        font-size: 20px;
         text-align: center;
-        word-wrap: break-word;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #118AB2;
+    }
+
+    .card__subtitle {
+        line-height: 1.5;
+        margin-bottom: 1.25rem;    
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #118AB2;
+    }
+
+    .hero__left{
+        display: flex;
+        flex-basis: 50%;
+        text-align: left;
+        display: inline;
+
+        p {
+            color: #fff;
+        }
+
+        .confirm {
+            color: #06D6A0;
+        }
+
+        .recovered {
+            color: #118AB2;
+        }
+
+        .death {
+            color: #EF476F;
+        }
+    }
+
+    img {
+        width: 40px;
+        height: auto;
+        border-radius: 5px;
+        margin: 10px;
+        display: flex;
+        flex-basis: 50%;
+        flex-direction: column;
+        justify-content: right;
+        padding: 15px;
     }
 `
 

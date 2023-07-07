@@ -9,7 +9,7 @@ function Global(props) {
         <StyledGlobal>
             <div className="global">
                 <h1>{title} Situation</h1>
-                <h3>Data Covid Berdasarkan {subtitle}</h3>
+                <h3>Covid Data Based On {subtitle}</h3>
             </div>
             <div className="card__container">
                 {situation

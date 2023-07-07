@@ -29,10 +29,10 @@ function Table({ data }) {
                     .map((province, index) => (
                         <tr key={index}>
                             <td>{province.kota}</td>
-                            <td>{province.kasus}</td>
-                            <td>{province.sembuh}</td>
-                            <td>{province.dirawat}</td>
-                            <td>{province.meninggal}</td>
+                            <td>{province.kasus.toLocaleString("id-ID")}</td>
+                            <td>{province.sembuh.toLocaleString("id-ID")}</td>
+                            <td>{province.dirawat.toLocaleString("id-ID")}</td>
+                            <td>{province.meninggal.toLocaleString("id-ID")}</td>
                         </tr>
                     )
                 )}
@@ -44,7 +44,7 @@ function Table({ data }) {
                             <button
                                 onClick={toggleShowAll}
                             >
-                                {showAll ? "Fold Table" : "Show All"}
+                                {showAll ? "Show Less" : "Show All"}
                             </button>
                         </div>
                     </td>
